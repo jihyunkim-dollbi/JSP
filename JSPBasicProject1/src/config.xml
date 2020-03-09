@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+
+	config파일은 src 파일 밑에 넣으면 따로 경로명 안줘도 되고,
+	다른 곳에 넣고 싶으면 따로 경로명 줘야함!
+
+
+	Connection과 관련! 데이터베이스 연결하는 곳!
+	1.연결시키고 db정보! =>config에서
+	2.sql문장만 작성! =>xml에!
+	3.vo에 값채워서 넘겨주기! =>xml에서.
+	
+	순서! 1. VO만들고
+		 2. DAO연결
+		 3.
+	
+	
+	
+	configuration => 최상위 TAG
+	XML은 순서 중요!! =-> dtd를 올려놓고 시작!!
+	
+	+한번 이상은 사용해야함
+ -->
+ 
+ <!--  
+ 
+ 	xml은 모두 사용자 정의 이기때문에! 
+ 	
+ 	dtd => tag를 정의할때! 
+ 	document 의 순서
+ 	
+ 	
+ 	1. default 아무 것도 안 붙은 상태 =>무조건 한번만 사용! 
+ 	2. ? => 한번을 사용하던지, 아니면 사용하지 않는다.
+ 	3. * => 여러번 사용 가능 but 안써도 ok!
+ 	4. + => 여러번 사용 가능 but 한번 이상은 반드시 사용해야함!
+ 	5. | => 선택 : tr (th | td)*  *=> 여러번 사용 가능!
+ 	
+ 	 
+ 	<html> => ?
+ 		<head>
+ 		</head>
+ 			<body> => *
+ 			</body>
+ 	</html>
+ 	
+ -->
+ 
+ <!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+ <configuration>
+ 
+ 	<typeAliases>
+ 	<!-- VO등록 과정 
+ 		typeAlias* ==>vo 개수별로 typeAlias 사용해야함! ==> 따라서 package단위로 만들어서 한개로 통합 가능! 
+ 	
+ 	-->
+ 	
+	<typeAlias type="com.sist.dao.MovieVO" alias="MovieVO"/>
+	<typeAlias type="com.sist.dao.MusicVO" alias="MusicVO"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<!-- 
+				transactionManager, dataSource =>반드시 한번 사용!
+			
+			 -->
+			 <transactionManager type="JDBC"/> 
+			 <!-- Commit, Rollback =>일괄처리 할거니? autocommit을 쓸거니? 
+			 
+			 
+			 1. autocommit => JDBC
+			 2. MANAGED SELF처리!-->
+			 	<dataSource type="POOLED"><!-- POOLED 커넥션 POOL, UNPOOLED -->
+			 	<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+			 	<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+			 	<property name="username" value="hr"/>
+			 	<property name="password" value="happy"/>
+			 	
+			 	<!-- 
+			 		maxActive=8 디폴트 값!
+			 		maxIdle=8
+			 	 -->
+			 	 
+			 </dataSource>	
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/sist/dao/movie-mapper.xml"/>
+	</mappers>
+	
+ </configuration>

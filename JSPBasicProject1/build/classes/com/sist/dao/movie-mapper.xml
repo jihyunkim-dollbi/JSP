@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	 
+	mapper는 따로 경로명을 줘야함@!
+	 
+	user-name 등등 
+	 
+	테이블마다 MAPPER 1개씩!
+	
+	PreparedStatement, ResultSet
+	=================
+	=> SQL				=> VO
+
+ -->
+ 
+ <!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!-- 
+ 	자바: 소속위치 : package
+ 	xml: 소속위치 : namespace =>파일명까지 지정함!!
+ 
+ 
+ 	=SELECT(select가 여러개 나오는 경우id로 구분) 
+ 	=INSERT
+ 	=UPDATE
+ 	=DELETE
+ 	=SQL => 반복이 되는 경우!
+ 
+  -->
+ <mapper namespace="com.sist.dao.movie-mapper">
+ 	<!-- XML sql문장 저장 시작 
+ 		MovieVO에 값을 채워서 가져옴!
+
+ 	-->
+ 	<select id="movieAllData" resultType="MovieVO">
+ 		SELECT mno, title, poster 
+ 		FROM movie
+ 		WHERE type=1
+ 	</select>
+ 	
+ 	<select id="musicAllData" resultType="MusicVO">
+ 		SELECT * FROM music_genie
+ 	</select>
+ 
+ 
+ </mapper>
+ 
