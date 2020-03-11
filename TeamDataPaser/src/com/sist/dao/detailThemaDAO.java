@@ -10,6 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.sist.manager.ThemaManager;
 import com.sist.vo.DetailThemaVO;
 
 
@@ -22,6 +23,9 @@ public class detailThemaDAO {
 	private Connection conn;
 	private PreparedStatement ps;
 	private static detailThemaDAO dao; //싱클톤 만들기
+	private ThemaManager mgr;
+	
+	
 	
 	//연결
 	public void getConnection()

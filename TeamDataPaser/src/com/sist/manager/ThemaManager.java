@@ -119,7 +119,7 @@ public class ThemaManager {
 		
 		ArrayList<String> tempList = new ArrayList<String>();
 	
-
+		
 		tempList.add("가족모임|가족외식,상견례,돌잔치/회갑/생일,어른과 함께라면,아이와 함께라면");
 		tempList.add("연인과 함께|소개팅,일상데이트,특별한 날엔");
 		tempList.add("친구와 함께|마시는 친구와 함께,술 못마시는 친구와 함께");
@@ -183,12 +183,113 @@ public class ThemaManager {
 			vo.setT_DetailThema(tempList.get(i).substring(0,tempList.get(i).indexOf("|")));
 			vo.setT_Info(tempList.get(i).substring((tempList.get(i).indexOf("|"))+1));
 			
+			
 			list.add(vo);	
 			
 			
 		}
 		return list;
 	}
+	
+	
+	
+	//, 를 기준으로 t_Info를 잘라서 t_subInfo에 넣을 예정!!
+	public ArrayList<DetailThemaVO> SubDetailThema(){
+		
+		
+		//DetailThemaVO를 ArrayList로 만들어서  채울 공간을 준비!
+		ArrayList<DetailThemaVO> list= new ArrayList<DetailThemaVO>();
+		
+		
+		//DetailThemaAllData(); 
+		
+		//DetailThemaAllData()의 리턴값인 list(데이터형:arraylist)를 위에서 생성한 객체 list(데이터형:arraylist)에 넣는다!  
+		//	i=10; 과 같이 같은 형은 대입가능하다!
+		list = DetailThemaAllData();
+		//이제 list에 모든 값이 담기고.
+		
+		
+		ArrayList<String> tempList = new ArrayList<String>();
+		
+		
+
+		// String[] splitStr=array.split(",");
+				
+		//모든 값
+		for(int i=0; i<list.size(); i++)
+		{
+			
+			while(i<list.get(i).getT_Info().length()){
+				
+			DetailThemaVO vo = new DetailThemaVO();
+			
+			//vo.setT_Info(tempList.get(i).substring((tempList.get(i).indexOf("|"))+1));
+		
+			String[] array = list.get(i).getT_Info().split(",");
+			
+			
+			for(int j=0; j<array.length;j++)
+			{
+				
+			//	String[] array = list.toArray(new String[list.size()]);
+				
+				
+	
+				tempList.add(array[j]);
+				
+				
+				
+				
+				}
+			
+			}
+			
+		}
+		
+		
+		return list;
+	}
+		/*
+			 * String birthday = "2016-11-15";
+        
+        		// split()을 이용해 '-'를 기준으로 문자열을 자른다.
+        		// split()은 지정한 문자를 기준으로 문자열을 잘라 배열로 반환한다.
+        			String date[] = birthday.split("-");
+
+			 */
+			/*/ for문을 이용한 split -> list 변환
+				String str = "a,b,c,d,e,f,g";
+				List<String> list = new ArrayList<String>();
+
+				String[] splitStr = str.split(",");
+				for(int i=0; i<splitStr.length; i++){
+    			list.add(splitStr[i]);
+				}
+				=================================
+				String num = "22,33,44,55,66,77";
+				String str[] = num.split(",");
+				List<String> al = new ArrayList<String>();
+				al = Arrays.asList(str);
+				
+				
+			 */
+	
+			// vo.setT_subInfo(list.get(i).);
+			
+		
+		
+	
+	
+	
+	
+	
+	
+	//public ArrayList<DetailThemaVO> DetailThemaAllData() {
+		
+	//t_info
+	
+	//}
+	
 	/*
 	public static void main(String[] args) {
 		ThemaManager tm = new ThemaManager();
