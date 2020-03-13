@@ -1,6 +1,7 @@
 package com.sist.manager;
 
 import java.util.*;
+
 import com.sist.vo.*;
 
 
@@ -94,19 +95,26 @@ public class ThemaManager {
 			
 			//vo에 tempList의 i번째의 subString(0, indexOf("|")) 
 			//subString을 이용하여 i번째 값을 0에서 indexOf("|") => |앞자리까지 자르기  
-			vo.setT_DetailThema(tempList.get(i).substring(0,tempList.get(i).indexOf("|")));
+			//vo.setT_DetailThema(tempList.get(i).substring(0,tempList.get(i).indexOf("|")));
+			//new
+			vo.setT_MainThema(tempList.get(i).substring(0,tempList.get(i).indexOf("|")));
 			
 			
 			//tempList에서 두번쨰 값 자르기
-			vo.setT_MainThema(tempList.get(i).substring((tempList.get(i).indexOf("|")+1),(tempList.get(i).lastIndexOf("|"))));
+			//vo.setT_MainThema(tempList.get(i).substring((tempList.get(i).indexOf("|")+1),(tempList.get(i).lastIndexOf("|"))));
+			//new
+			vo.setT_DetailThema(tempList.get(i).substring((tempList.get(i).indexOf("|")+1),(tempList.get(i).lastIndexOf("|"))));
+			
 			
 			//tempList에서 세번째값 자르기
 			vo.setT_Info(tempList.get(i).substring(tempList.get(i).lastIndexOf("|")+1));
 			
 			
 			// 각각 얻어진 vo를 list에 담기!!
-			list.add(vo);			
+			list.add(vo);
+			
 		}
+		
 		//리턴 list!
 		return list;
 	}
@@ -172,7 +180,6 @@ public class ThemaManager {
 		tempList.add("해돋이 명소|강릉 정동진 해돋이축제,여수 향일암 일출제,울산 간절곶 해맞이축제,제주 성산 일출축제,포항 호미곶 해맞이축전,부산 해맞이축제");
 		tempList.add("LG U+ 추천맛집|LG U+ 추천맛집");
 		tempList.add("서초구 추천맛집|YUMMY서초 2015년판");
-			
 		
 		
 		//값을 자르기!
@@ -183,9 +190,7 @@ public class ThemaManager {
 			vo.setT_DetailThema(tempList.get(i).substring(0,tempList.get(i).indexOf("|")));
 			vo.setT_Info(tempList.get(i).substring((tempList.get(i).indexOf("|"))+1));
 			
-			
 			list.add(vo);	
-			
 			
 		}
 		return list;
@@ -199,56 +204,47 @@ public class ThemaManager {
 		
 		//DetailThemaVO를 ArrayList로 만들어서  채울 공간을 준비!
 		ArrayList<DetailThemaVO> list= new ArrayList<DetailThemaVO>();
-		
-		
-		//DetailThemaAllData(); 
-		
-		//DetailThemaAllData()의 리턴값인 list(데이터형:arraylist)를 위에서 생성한 객체 list(데이터형:arraylist)에 넣는다!  
-		//	i=10; 과 같이 같은 형은 대입가능하다!
-		list = DetailThemaAllData();
-		//이제 list에 모든 값이 담기고.
-		
-		
+			
 		ArrayList<String> tempList = new ArrayList<String>();
-		
-		
+
+		list = DetailThemaAllData();
 
 		// String[] splitStr=array.split(",");
 				
+		
+		
 		//모든 값
 		for(int i=0; i<list.size(); i++)
 		{
 			
-			while(i<list.get(i).getT_Info().length()){
+			//DetailThemaVO vo = new DetailThemaVO();
+			
+			
+			
+			
+			//while(i<list.get(i).getT_Info().length()){
 				
-			DetailThemaVO vo = new DetailThemaVO();
-			
-			//vo.setT_Info(tempList.get(i).substring((tempList.get(i).indexOf("|"))+1));
-		
-			String[] array = list.get(i).getT_Info().split(",");
 			
 			
+		//	String[] array = list.get(i).getT_Info().split(",");
+		//	System.out.println(array[0]);
+	
 			for(int j=0; j<array.length;j++)
 			{
 				
 			//	String[] array = list.toArray(new String[list.size()]);
-				
-				
-	
+			
 				tempList.add(array[j]);
-				
-				
 				
 				
 				}
 			
 			}
-			
-		}
-		
 		
 		return list;
 	}
+	
+	
 		/*
 			 * String birthday = "2016-11-15";
         
