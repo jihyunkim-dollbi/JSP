@@ -31,6 +31,8 @@
     						==ID명칭 동일
     						
     	4) <jsp:setProperty> : setXxx()에 값을 채운다.
+    				========
+    				변수!개념!
     	(<jsp:getProperty>)
     						==> VO, DTO, Bean(JSP)
     		Bean
