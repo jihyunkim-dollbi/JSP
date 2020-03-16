@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  
+  <display-name>JSPBasicProject5</display-name>
+  <!-- 에러처리 출력 페이지 설정은 web.xml에서!! -->
+  
+  <!-- 1.서블릿 등록 => 톰캣이 읽어들림 => spring ,mvc
+  	   2. filter => 한글 변환 코드 작성
+  	   3. error처리
+  	==========================> 톰캣이 읽어서 처리할 수 있게 환경설정
+  	
+  	=>web과 관련 분석 순서
+  		1)web.xml(제공하는 태그들만 사용해야한다!) ======> Framawork 
+  		2)server.xml 
+  		3)자바 클래스  
+  		4)JSP    
+  	
+  	
+   -->
+  <error-page>
+  	<error-code>400</error-code>
+  	<location>/dataBoard/400.jsp</location><!-- 위치 -->
+  </error-page>	
+  
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/dataBoard/404.jsp</location><!-- 위치 -->
+  </error-page>	
+  
+  <error-page>
+  	<error-code>500</error-code>
+  	<location>/dataBoard/500.jsp</location><!-- 위치 -->
+  </error-page>	
+  
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
