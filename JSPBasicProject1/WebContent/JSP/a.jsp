@@ -2,6 +2,34 @@
     pageEncoding="UTF-8"%>
 
 <!-- out.println 이 생략된 상태!! -->
+
+<!-- 
+
+	1.
+	JSP 생성과정 => JSP 제작 => JAVA 생성 => 컴파일(.class) => JVM읽어서  메모리 출력(html, xml only) 
+	
+	=> 브라우저에 출력
+	
+	=> HTML(UI)/XML(문서:서버..etc => 정확한 문자열 검색 가능! ==> 문서형 데이터베이스 & 모든 운영체재,언어 사용 가능) 
+	
+	2. <% %>  <%= %>
+	
+    3. 기본객체 (request, response, application, session)
+
+	4. <jsp:~ > 액션태그
+	
+	5. URL : GET/POST , 한글변환
+			========== =======
+			
+	6. errorcode만드는 법
+	
+	7. 사용범위! (request, session)
+	
+	
+
+
+
+ -->
 <%!
  int a=10;
  String str ="java";

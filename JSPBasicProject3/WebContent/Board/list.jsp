@@ -107,19 +107,40 @@ h2 {
 						}
 					%>
 					
-					<%= vo.getSubject() %> <!-- 제목은 항상  -->
+					<%
+					
+					String msg="관리자가 삭제한 게시물 입니다.";
+					
+					if(msg.equals(vo.getSubject()))
+					{
+							
+					%>
+					
+						<!-- 비활성화시킴, 링크 안되게.. -->
+						<span style="color:#ededed"><%=vo.getSubject() %></span>
+						
+					<%			
+							
+					}
+					else
+					{
+					
+					%>
+					
+					<!-- 목록에서 제목을 클릭하면 상세보기로 넘어가도록.. -->
+					<a href="detail.jsp?no=<%= vo.getNo() %>&page=<%= curpage%>"><%= vo.getSubject() %></a> <!-- 제목은 항상  -->
 					
 					<%
 						String today=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-					if(today.equals(vo.getRegdate().toString()))
-					{
+						if(today.equals(vo.getRegdate().toString()))
+						{
 						
 					%>
 							<sub><img src="new.gif"></sub>
-							
 					<%
 					
-					}
+						}
+					  }
 					%>
 					</td>
 					<td width=15% class="text-center"><%= vo.getName() %></td>
@@ -138,18 +159,12 @@ h2 {
 			<tr>
 				<td class="text-center">
 				<a href="list.jsp?page=<%=curpage>1?curpage-1:curpage %>" class="btn btn-sm btn-default">이전</a>
-				
 				<%= curpage %> page / <%=totalpages  %> pages
-				
-				<a href="list.jsp?page=<%=curpage<totalpages?curpage+1:curpage %>" class="btn btn-sm btn-default">다음</a>
-				
+				<a href="list.jsp?page=<%=curpage<totalpages?curpage+1:curpage %>" class="btn btn-sm btn-default">다음</a>	
 				</td>
 			</tr>
 		
-		</table>
-			
-			
-				
+		  </table>	
 		</div>	
 	</div>
 </body>
