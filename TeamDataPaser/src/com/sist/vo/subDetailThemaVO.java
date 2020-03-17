@@ -11,7 +11,7 @@ public class subDetailThemaVO {
 
 	private String t_DetailThema;
 		
-	private ArrayList<String> t_subInfo;
+	private String t_subInfo;
 	
 	
 }

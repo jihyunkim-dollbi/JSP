@@ -1,7 +1,6 @@
 package com.sist.manager;
 
 import java.util.*;
-
 import com.sist.vo.*;
 
 
@@ -188,14 +187,37 @@ public class ThemaManager {
 			DetailThemaVO vo = new DetailThemaVO();
 
 			vo.setT_DetailThema(tempList.get(i).substring(0,tempList.get(i).indexOf("|")));
-			vo.setT_Info(tempList.get(i).substring((tempList.get(i).indexOf("|"))+1));
 			
-			list.add(vo);	
+			
+			
+			//vo.setT_Info(tempList.get(i).substring((tempList.get(i).indexOf("|"))+1));
+			
+			String temp = tempList.get(i).substring((tempList.get(i).indexOf("|"))+1);
+			
+			
+			StringTokenizer str1 = new StringTokenizer(temp, ",");
+			//String[] temp2 = temp.split(",");
+		
+		
+		
+			while(str1.hasMoreTokens())
+			//for(int j=0; j< str1.nextToken().length(); j++)
+			{
+				
+				String token = str1.nextToken();
+			
+				vo.setT_Info(token);
+				
+			    list.add(vo);	
+			    System.out.println(token);
+			  
+			}
 			
 		}
 		return list;
 	}
 	
+	/*
 	
 	
 	//, 를 기준으로 t_Info를 잘라서 t_subInfo에 넣을 예정!!
