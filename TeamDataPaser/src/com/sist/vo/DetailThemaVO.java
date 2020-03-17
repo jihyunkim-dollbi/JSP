@@ -26,15 +26,5 @@ public class DetailThemaVO {
 	}
 	
 	
-	@Override
-	public String toString() {
 
-		return "[" + t_DetailThema + ", " + t_Info + "]";
-
-	}
-
-
-
-	
-	
 }

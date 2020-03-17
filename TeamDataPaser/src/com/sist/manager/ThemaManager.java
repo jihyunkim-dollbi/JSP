@@ -188,128 +188,38 @@ public class ThemaManager {
 
 			vo.setT_DetailThema(tempList.get(i).substring(0,tempList.get(i).indexOf("|")));
 			
-			
+			//System.out.println(i + tempList.get(i).substring(0,tempList.get(i).indexOf("|")));
 			
 			//vo.setT_Info(tempList.get(i).substring((tempList.get(i).indexOf("|"))+1));
 			
+		
 			String temp = tempList.get(i).substring((tempList.get(i).indexOf("|"))+1);
 			
 			
 			StringTokenizer str1 = new StringTokenizer(temp, ",");
-			//String[] temp2 = temp.split(",");
-		
-		
-		
+			
+			
 			while(str1.hasMoreTokens())
-			//for(int j=0; j< str1.nextToken().length(); j++)
 			{
 				
 				String token = str1.nextToken();
 			
+				//System.out.println(i+"번째: "+token);
+				
 				vo.setT_Info(token);
 				
-			    list.add(vo);	
-			    System.out.println(token);
-			  
+			    list.add(vo);	  
 			}
 			
 		}
 		return list;
 	}
 	
-	/*
-	
-	
-	//, 를 기준으로 t_Info를 잘라서 t_subInfo에 넣을 예정!!
-	public ArrayList<DetailThemaVO> SubDetailThema(){
-		
-		
-		//DetailThemaVO를 ArrayList로 만들어서  채울 공간을 준비!
-		ArrayList<DetailThemaVO> list= new ArrayList<DetailThemaVO>();
-			
-		ArrayList<String> tempList = new ArrayList<String>();
-
-		list = DetailThemaAllData();
-
-		// String[] splitStr=array.split(",");
-				
-		
-		
-		//모든 값
-		for(int i=0; i<list.size(); i++)
-		{
-			
-			//DetailThemaVO vo = new DetailThemaVO();
-			
-			
-			
-			
-			//while(i<list.get(i).getT_Info().length()){
-				
-			
-			
-		//	String[] array = list.get(i).getT_Info().split(",");
-		//	System.out.println(array[0]);
-	
-			for(int j=0; j<array.length;j++)
-			{
-				
-			//	String[] array = list.toArray(new String[list.size()]);
-			
-				tempList.add(array[j]);
-				
-				
-				}
-			
-			}
-		
-		return list;
-	}
-	
-	
-		/*
-			 * String birthday = "2016-11-15";
-        
-        		// split()을 이용해 '-'를 기준으로 문자열을 자른다.
-        		// split()은 지정한 문자를 기준으로 문자열을 잘라 배열로 반환한다.
-        			String date[] = birthday.split("-");
-
-			 */
-			/*/ for문을 이용한 split -> list 변환
-				String str = "a,b,c,d,e,f,g";
-				List<String> list = new ArrayList<String>();
-
-				String[] splitStr = str.split(",");
-				for(int i=0; i<splitStr.length; i++){
-    			list.add(splitStr[i]);
-				}
-				=================================
-				String num = "22,33,44,55,66,77";
-				String str[] = num.split(",");
-				List<String> al = new ArrayList<String>();
-				al = Arrays.asList(str);
-				
-				
-			 */
-	
-			// vo.setT_subInfo(list.get(i).);
-			
-		
-		
 	
 	
 	
-	
-	
-	
-	//public ArrayList<DetailThemaVO> DetailThemaAllData() {
-		
-	//t_info
-	
-	//}
-	
-	/*
 	public static void main(String[] args) {
+		
 		ThemaManager tm = new ThemaManager();
 		ArrayList<MainThemaVO> list1 = new  ArrayList<MainThemaVO>();
 		ArrayList<DetailThemaVO> list2 = new  ArrayList<DetailThemaVO>();
@@ -323,13 +233,17 @@ public class ThemaManager {
 			System.out.println(list1.get(i).getT_Info());
 			System.out.println();
 		}
+
 		System.out.println("====================================================================");
-		for(int i = 0; i < list1.size() ; i++)
+		
+		
+		for(int i = 0; i < list2.size() ; i++)
 		{
 			System.out.println(list2.get(i).getT_DetailThema());
-			System.out.println(list2.get(i).getT_Info());
+			System.out.print(list2.get(i).getT_Info());
 			System.out.println();
+		
 		}
 	}
-	*/
+	
 }
