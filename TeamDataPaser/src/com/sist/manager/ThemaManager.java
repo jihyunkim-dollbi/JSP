@@ -1,6 +1,8 @@
 package com.sist.manager;
 
 import java.util.*;
+
+import com.sist.dao.*;
 import com.sist.vo.*;
 
 
@@ -220,7 +222,8 @@ public class ThemaManager {
 	
 	public static void main(String[] args) {
 		
-		ThemaManager tm = new ThemaManager();
+		
+	/*	ThemaManager tm = new ThemaManager();
 		ArrayList<MainThemaVO> list1 = new  ArrayList<MainThemaVO>();
 		ArrayList<DetailThemaVO> list2 = new  ArrayList<DetailThemaVO>();
 		list1 = tm.MainThemaAllData();
@@ -228,15 +231,15 @@ public class ThemaManager {
 		
 		for(int i = 0; i < list1.size() ; i++)
 		{
-			System.out.println(list1.get(i).getT_DetailThema());
 			System.out.println(list1.get(i).getT_MainThema());
+			System.out.println(list1.get(i).getT_DetailThema());
 			System.out.println(list1.get(i).getT_Info());
 			System.out.println();
 		}
 
 		System.out.println("====================================================================");
 		
-		
+		/*
 		for(int i = 0; i < list2.size() ; i++)
 		{
 			System.out.println(list2.get(i).getT_DetailThema());
@@ -244,6 +247,89 @@ public class ThemaManager {
 			System.out.println();
 		
 		}
+		
+		*/
+		
+		/*
+		
+		FoodManager fm = new FoodManager();
+		ArrayList<FoodHouseVO> list=fm.foodAllData();
+		FoodDAO dao=FoodDAO.newInstance();
+		
+		int k=1;
+		for(FoodHouseVO vo:list)
+		{
+			dao.foodHouseInsert(vo);
+			
+			System.out.println("k="+k);
+			
+			
+			try
+			{
+				Thread.sleep(100);
+				
+			}catch(Exception ex){}
+			
+			k++;
+		}
+		
+	
+		/*
+		 *
+		 *ThemaManager tm = new ThemaManager();
+		ArrayList<MainThemaVO> list = tm.MainThemaAllData();
+		//ArrayList<DetailThemaVO> list2 = new  ArrayList<DetailThemaVO>();
+		
+		
+		detailThemaDAO dao =detailThemaDAO.newInstance();
+		
+		int k=1;
+		for(MainThemaVO vo:list)
+		{
+			dao.mainThemaInsert(vo);
+			
+			System.out.println("k="+k);
+			
+			try{
+				
+				Thread.sleep(500);
+				
+			}catch(Exception ex) {}
+			
+			k++;
+		}
+		System.out.println("save end.........");
+		
+		
+		 */
+		
+		
+		ThemaManager tm = new ThemaManager();
+		ArrayList<MainThemaVO> list = tm.MainThemaAllData();
+		//ArrayList<DetailThemaVO> list2 = new  ArrayList<DetailThemaVO>();
+		
+		
+		detailThemaDAO dao =detailThemaDAO.newInstance();
+		
+		int k=1;
+		for(MainThemaVO vo:list)
+		{
+			dao.mainThemaInsert(vo);
+			
+			System.out.println("k="+k);
+			
+			try{
+				
+				Thread.sleep(500);
+				
+			}catch(Exception ex) {}
+			
+			k++;
+		}
+		System.out.println("save end.........");
+		
+		
+		
 	}
 	
 }
