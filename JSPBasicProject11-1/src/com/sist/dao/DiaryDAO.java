@@ -100,8 +100,42 @@ public class DiaryDAO {
 		
 		return list;
 		
-		
 	}
+	
+	//id check
+	public int idcheck(String id)
+	{
+		int count=0;
+		try{
+			
+			getConnection();
+			String sql="SELECT COUNT(*) FROM member "
+					+ "WHERE id=?";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, id);
+			ResultSet rs=ps.executeQuery();
+			
+			rs.next();
+			count=rs.getInt(1);
+			rs.close();
+			
+		}catch(Exception ex){
+			
+			ex.printStackTrace();
+			
+		}finally
+		{
+			disConnection();
+			
+		}
+		return count;
+	}
+	
+	
+	
+	
+	
 	
 	
 }

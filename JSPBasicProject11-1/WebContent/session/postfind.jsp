@@ -8,13 +8,13 @@
     
     	}catch(Exception ex) {}
     
-    	String dong=request.getParameter("dong");
+    	String dong=request.getParameter("dong"); // '연남'검색한 값을 여기서 다시 받음!!
     	//시작하자마자 값이 들어오지 않기 때문에 null값일 경우 처리를 해줘야한다.!!
     	
     	    
-    	List<ZipcodeBean> list=null; //값을 받아옴
+    	List<ZipcodeBean> list=null; //값을 받아옴 // 맨처음 창을 띄웠을때 값이 null
     	
-    	if(dong!=null)
+    	if(dong!=null) //null일때 출력하지마라.
     	{
     		list=dao.postfind(dong); //값이 있을때만 db를 연동해라.
     		
@@ -76,7 +76,7 @@ function ok(zip,addr){ //변수명만 설정가능!!!
 			<table class="table">
 				<tr>
 					<td>
-					입력:<input type=text name=dong size=15 class="input-sm">
+					입력:<input type=text name=dong size=15 class="input-sm" value="<%=dong!=null?dong:""%>">
 					<input type=button value="검색" class="btn btn-sm btn-primary" onclick="postfind()">
 					</td>	
 				</tr>
