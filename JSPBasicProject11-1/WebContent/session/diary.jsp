@@ -267,19 +267,3 @@ function change(){
 </body>
 </html>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
