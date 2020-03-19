@@ -1,6 +1,7 @@
 package com.sist.dao;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.*;
@@ -94,7 +95,7 @@ public class detailThemaDAO {
 			ps=conn.prepareStatement(sql);
 			
 			ps.setString(1, vo.getT_MainThema());
-			ps.setString(2, vo.getT_MainThema());
+			ps.setString(2, vo.getT_DetailThema());
 			ps.setString(3, vo.getT_Info());
 			
 			ps.executeUpdate();
@@ -112,5 +113,41 @@ public class detailThemaDAO {
 		
 		
 	}
+	
+	
+	public void detailThemaInsert(DetailThemaVO vo)
+	{
+		try{
+			
+			getConnection();
+			
+			String sql="INSERT INTO detailThema VALUES(?,?)";
+			
+			ps=conn.prepareStatement(sql);
+			
+			ps.setString(1, vo.getT_DetailThema());
+			ps.setString(2, vo.getT_Info());
+			
+			ps.executeUpdate();
+			
+			
+			
+		}catch(Exception ex)
+		{
+			
+			ex.printStackTrace();
+			
+		}finally{
+			
+			disConnection();
+		}
+		
+		
+	}
+	
+	
+	
+	
+	
 	
 }

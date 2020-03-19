@@ -1,7 +1,6 @@
 package com.sist.manager;
 
 import java.util.*;
-
 import com.sist.dao.*;
 import com.sist.vo.*;
 
@@ -218,12 +217,10 @@ public class ThemaManager {
 	}
 	
 	
-	
-	
 	public static void main(String[] args) {
 		
-		
-	/*	ThemaManager tm = new ThemaManager();
+		/*
+		ThemaManager tm = new ThemaManager();
 		ArrayList<MainThemaVO> list1 = new  ArrayList<MainThemaVO>();
 		ArrayList<DetailThemaVO> list2 = new  ArrayList<DetailThemaVO>();
 		list1 = tm.MainThemaAllData();
@@ -305,16 +302,17 @@ public class ThemaManager {
 		
 		
 		ThemaManager tm = new ThemaManager();
-		ArrayList<MainThemaVO> list = tm.MainThemaAllData();
-		//ArrayList<DetailThemaVO> list2 = new  ArrayList<DetailThemaVO>();
+		//ArrayList<MainThemaVO> list = tm.MainThemaAllData();
+		ArrayList<DetailThemaVO> list2 = tm.DetailThemaAllData();
 		
 		
 		detailThemaDAO dao =detailThemaDAO.newInstance();
 		
-		int k=1;
-		for(MainThemaVO vo:list)
+		int k=1; 
+		for(DetailThemaVO vo:list2)
 		{
-			dao.mainThemaInsert(vo);
+			
+			dao.detailThemaInsert(vo);
 			
 			System.out.println("k="+k);
 			
@@ -322,13 +320,10 @@ public class ThemaManager {
 				
 				Thread.sleep(500);
 				
-			}catch(Exception ex) {}
-			
+			}catch(Exception ex) {}	
 			k++;
 		}
 		System.out.println("save end.........");
-		
-		
 		
 	}
 	
