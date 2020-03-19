@@ -139,7 +139,7 @@ function change(){
 </head>
 <body>
 	<div class="container">
-		<h1 class="text-center"><%=sy %>년 <%=sm %>월  일정</h1>
+		<h1 class="text-center"><%=session.getAttribute("name")%>(<%=session.getAttribute("id") %>)&nbsp;<%=sy %>년 <%=sm %>월  일정</h1>
 		<div class="row">
 			<form method="post" name="frm" action="diary.jsp">
 		 	<table class="table">
@@ -239,7 +239,9 @@ function change(){
 							back="success";
 						
 				 %>
-				 			<td height="140" class="text-left <%=back%>"  valign="top"><h4><font color="<%= color%>"><%=i %></font></h4></td>
+				 			<td height="140" class="text-left <%=back%>"  valign="top"><h4><font color="<%= color%>">
+				 			<a href="diary_insert.jsp"><%=i %></a> <!-- 날짜 출력!!! -->
+				 			</font></h4></td>
 				 
 				 <%		
 				 		week++;

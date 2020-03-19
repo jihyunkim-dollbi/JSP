@@ -46,6 +46,32 @@ function idcheck(){
 	window.open("idcheck.jsp","idcheck","width=380,height=280,scrollbars=no");
 	 
 }
+function join(){
+	
+	/*
+	 태그에 접근 : 계층구조
+	 
+	 	1. window
+	
+	 	2.document (html전체를 갖고 있는 파일)
+	 		
+	 	3. form frm을 가진 form태그를 찾아라
+	 		
+	 		4  1)input
+	 		4  2)select
+	 		4  3)textarea
+	
+	 	include될때 = 해당jsp 파일안에 form태그가 여러개 있을수 있기때문에name으로 지정을 해줘야함.
+	 		
+	*/
+	
+	//유효성 검사 => 스프링 내부에 있다
+	//document.frm.naame => $('#name')
+	document.frm.submit(); //frm에 submit()을 실행해라
+	
+	
+}
+
  </script>
 
 <style type="text/css">
@@ -62,7 +88,7 @@ function idcheck(){
 	<div class="container">
 		<h1 class="text-center">회원가입</h1>
 		<div class="row">
-			<form name="frm">
+			<form name="frm" action="join_ok.jsp" method="post"> <!--  "join_ok.jsp"으로 이동! post 데이터가 많아서. 데이터를 db로 보내는 jsp -->
 			<table class="table table-hover">
 				<tr>
 					<th width=15% class="danger text-right">ID</th>
@@ -98,7 +124,7 @@ function idcheck(){
 				<tr>
 					<th width=15% class="danger text-right">성별</th>
 					<td width=85%>
-						<input type="radio" name=sex value="남자" checked>남자 &nbsp;&nbsp;
+						<input type="radio" name=sex value="남자" checked>남자
 						<input type="radio" name=sex value="여자" >여자
 					</td>
 				</tr>
@@ -155,7 +181,9 @@ function idcheck(){
 				
 				<tr>
 					<td colspan="2" class="text-center">
-						<input type=button value="회원가입" class="btn btn-sm btn-info"> <!--  button =submit(하면 화면 리셋됨!!)  -->
+						<input type=button value="회원가입" class="btn btn-sm btn-info"
+						onclick="join()"
+						> <!--  button =submit(하면 화면 리셋됨!!) 클릭하면 join()함수 읽기!모든 데이터를 보냄! join_ok.jsp => 로 고고 !-->
 						<input type=button value="취소" class="btn btn-sm btn-success"
 							onclick="javascript:history.back()"
 						>
