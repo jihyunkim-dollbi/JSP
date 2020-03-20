@@ -36,6 +36,8 @@ public class mainInfoVO {
 	public void setR_Name(String r_Name) {
 		this.r_Name = r_Name;
 	}
+	
+	
 	public String getR_Type() {
 		return r_Type;
 	}

@@ -13,6 +13,30 @@ import com.sist.vo.*;
 // 버릴 값은 0값으로!!
 
 public class mainInfoManager {
+	
+	
+	public String MediaSubString(String cutchar, String fulltitle) {
+		
+		String temp ="";
+		/*StringTokenizer a = new StringTokenizer(str);*/
+		 int i=0;
+		/*while(true)
+		{
+			i++;
+			token
+			temp = fulltitle.substring(0,fulltitle.indexOf(cutchar)).trim();
+			try {
+				temp += fulltitle.substring(fulltitle.indexOf(cutchar,i),fulltitle.indexOf(cutchar,i+1)+1).trim();
+				
+			}catch(Exception ex) {
+				break;
+			}
+		}*/
+		return temp.trim();
+	}
+	
+	
+	
 
 	
 	public ArrayList<mainInfoVO> mainInfoAllData(ArrayList<AreacodeVO> areacode)
@@ -22,7 +46,7 @@ public class mainInfoManager {
 		
 
 		ArrayList<AreacodeVO> ac = areacode;
-		int page = 2;
+		int page = 1;
 		int category = 1;
 		/*
 		 * 
@@ -53,7 +77,7 @@ public class mainInfoManager {
 		 */
 		Element r_No;
 		Element r_Name;
-		Element r_Type;  //자르기!!
+		Element r_Foodtype;  //자르기!!
 		Element r_Tel;   
 		Element r_Score;
 		Element r_ScoreCount;
@@ -122,12 +146,9 @@ public class mainInfoManager {
 						}catch (Exception ex) { break;}
 						
 						
-						
-						
 						/*
 						 * 
 						try {
-				
 								r_Foodtype = doc2.select("dl.restType dd.type").get(0);
 							
 								if(r_Foodtype.text().indexOf("-") != -1)   //카페/주점-카페
@@ -136,34 +157,65 @@ public class mainInfoManager {
 									vo.setR_Foodtype(r_Foodtype.text());
 									
 							}catch(Exception ex) {vo.setR_Foodtype("기타");}
-							 
-						 * 
+						 
 						 */
 						
 						
 						//가게업종
-						
 						try{
 							
 							//가게 업종의 값을 읽어서 r_Type에 넣음!
-							r_Type = doc2.select("dl.restType dd.type").get(0);
+							
+							try {
+								
+								r_Foodtype = doc2.select("dl.restType dd.type").get(0);
+								
+								//경우1
+								if(r_Foodtype.text().indexOf("-") != -1){ // -있다면!
+									// "-" 글자 아에서 - 앞까지 자르고..
+									vo.setR_Type(r_Foodtype.text().substring(0,r_Foodtype.text().indexOf("-")));
+									
+								}
+								//경우2
+								else if(r_Foodtype.text().indexOf("(") != -1){ // 문자열에 "(" 있다면
+									// "-" 글자 아에서 ( 앞까지 자르고..
+									
+									try{
+										// 전문뷔페(씨푸드뷔페)  ==> 뷔페
+										if(r_Foodtype.text().indexOf("뷔")==2){
+												
+											vo.setR_Type(r_Foodtype.text().substring(3,5));
+											
+										}else{ // 한식(돈까스 전문) => 한식
+									
+											vo.setR_Type(r_Foodtype.text().substring(0,r_Foodtype.text().indexOf("(")));
+										}
+									
+									}catch(Exception ex)
+									{	
+										break; }
+									
+								}
+								//경우3  전문뷔페 =>  인덱스 2번째에 "뷔"가 있으면 => 
+								else if(r_Foodtype.text().indexOf("뷔")==2){
+								
+									vo.setR_Type(r_Foodtype.text().substring(3,5));
+									 
+								}// 경우 4
+								else //그 외에는..그냥 담기//?
+									vo.setR_Type(r_Foodtype.text());
+								
+								}catch(Exception ex) {vo.setR_Type("기타");} //위에 해당되지 않으면!!
 							
 							
-							
-							
-						}catch(Exception ex) {}
+							}catch(Exception ex) {}
+							//가게업종끝!!
 						
-						
-						
-						
-						
-					}
+						list.add(vo);
+						}
 					
 					
-					
-					
-					
-					
+					//가장 밖 try!
 				}catch(Exception ex)
 				{ ex.printStackTrace(); }
 				
@@ -183,6 +235,71 @@ public class mainInfoManager {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		mainInfoManager ifm = new mainInfoManager();
+		AreacodeManager am = new AreacodeManager();
+		
+		
+		ArrayList<mainInfoVO> list = new  ArrayList<mainInfoVO>();
+		
+		System.out.println(ifm.MediaSubString(",", "aaa,bbb,ccc"));
+		
+		list = ifm.mainInfoAllData(am.AreacodeAllData());
+		
+		mainInfoDAO dao=mainInfoDAO.newInstance();
+		
+		int k=1;
+		for(int i = 0 ; i < list.size() ; i++)
+		{
+			
+			System.out.println("k="+k);
+			
+			try{
+				
+				Thread.sleep(500);
+				
+			}catch(Exception ex) {}	
+			k++;
+			
+			System.out.println(list.get(i).getR_No());
+			System.out.println(list.get(i).getR_Name());
+			System.out.println(list.get(i).getR_Type());
+			
+			
+		/*
+			System.out.println(list.get(i).getR_Tel());
+			System.out.println(list.get(i).getR_Addr1());
+			System.out.println(list.get(i).getR_Addr2());
+			System.out.println(list.get(i).getR_Score());
+			System.out.println(list.get(i).getR_ScoreCount());		
+			System.out.println(list.get(i).getR_Lowprice());
+			System.out.println(list.get(i).getR_Highprice());
+			System.out.println(list.get(i).getR_Opentime());
+			System.out.println(list.get(i).getR_Closetime());
+			System.out.println(list.get(i).getR_Holiday());
+			System.out.println(list.get(i).getR_Content());
+			System.out.println(list.get(i).getR_Good());
+			System.out.println(list.get(i).getR_Seat());
+			System.out.println(list.get(i).getR_Room());
+			
+			System.out.println(list.get(i).getR_Drink());
+			System.out.println(list.get(i).getR_Nosmoking());
+			System.out.println(list.get(i).getR_Reserve());
+			System.out.println(list.get(i).getR_Restroom());
+			System.out.println(list.get(i).getR_Park());
+			System.out.println(list.get(i).getR_Other());
+			System.out.println(list.get(i).getR_Delivery());
+			System.out.println(list.get(i).getR_hit());
+			System.out.println(list.get(i).getR_Start());
+		*/	
+			System.out.println(list.get(i).getR_Area());
+			System.out.println(list.get(i).getR_AreaDetail());
+			
+			System.out.println();
+		}
+		System.out.println("save end.........");
+		
+		
+		
 		
 	}
 
