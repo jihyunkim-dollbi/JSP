@@ -3,6 +3,7 @@ package com.sist.manager;
 
 import java.util.ArrayList;
 
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -41,13 +42,14 @@ public class mainInfoManager {
 	
 	public ArrayList<mainInfoVO> mainInfoAllData(ArrayList<AreacodeVO> areacode)
 	{
-		ArrayList<mainInfoVO> list = new ArrayList<mainInfoVO>();
+		ArrayList<mainInfoVO> list = new  ArrayList<mainInfoVO>();
 		mainInfoVO vo;
 		
-
 		ArrayList<AreacodeVO> ac = areacode;
-		int page = 1;
-		int category = 1;
+		int page = 5;
+		int kategorie = 24;
+		
+
 		/*
 		 * 
 	// 가게 고유번호
@@ -75,17 +77,84 @@ public class mainInfoManager {
 		 * 
 		 * 
 		 */
-		Element r_No;
-		Element r_Name;
-		Element r_Foodtype;  //자르기!!
-		Element r_Tel;   
-		Element r_Score;
-		Element r_ScoreCount;
-		Element r_Pwd;
-		Element r_Addr1;
-		Element r_Addr2;
-		Element r_Area;
-		Element r_AreaDetail;
+
+
+
+//		//가게 쉬는날
+//		private String r_Holiday;
+//		//가게 소개
+//		private String r_Content;
+//		//가게 좋아요 갯수
+//		private String r_Good;
+//		//가게 좌석 갯수
+//		private String r_Seat;
+//		//가게 방 갯수
+//		private String r_Room;
+//		//주류판매 여부
+//		private String r_Drink;
+//		//금연석정보
+//		private String r_Nosmoking;
+//		//예약 여부
+//		private String r_Reserve;
+//		//화장실 여부
+//		private String r_Restroom;
+//		//주차 여부
+//		private String r_Park;
+//		//배달 여부
+//		private String r_Delivery;
+//		//누적 방문자숫자
+//		private int r_hit;
+//		//홈페이지 처음 시작한 날짜
+//		private Date r_Start;
+//		//가게정보 수정일자
+//		private Date r_Date;
+
+//		//누적 방문자숫자
+//		private int r_hit;
+//		//홈페이지 처음 시작한 날짜
+//		private Date r_Start;
+//		//가게 지역(ex.서울강남,서울강북...)
+//		private String r_Area;
+//		//가게 세부지역(ex.가로수길,강남역...)
+//		private String r_AreaDetail;
+		Element rNo;
+		Element rName;
+		Element rType;
+		Element rTel;
+		Element rAddr1;
+		Element rAddr2;
+		Element rScore;
+		Element rScoreCount;
+//		private int r_Lowprice;	
+//		private int r_Highprice;
+		//위에 두개 합친것
+		Element rPrice;		
+//		Element r_Opentime;
+//		Element r_Closetime;
+		//위에 두개 합친것
+		Element rBusinesstime;
+		Element rHoliday;
+		Element rContent;
+		Element rGood;
+//		Element r_Seat;
+//		Element r_Room;
+		//위에두개 합친것
+		Element rSeat_Room;		
+		Element rDrink;
+		Element rNosmoking;
+		Element rReserve;
+		Element rRestroom;
+		Element rPark;
+		Element rDelivery;
+		Element rOther;
+		Element rTakeout;
+		
+		Element rhit;	
+		Element rStart;
+		Element rAreaDetail;
+		Element rArea;
+		
+		Element rDate;
 		
 		
 		//System.out.println("현재 카테고리 번호 : "+ (z+1)  + ",현재페이지번호 : " + (j+1) +", 현재지역번호 : "+(i+1));
@@ -109,7 +178,7 @@ public class mainInfoManager {
 					// System.out.println(link);
 					
 					// 페이지를 돌면서 z에서 상세정보를 모두 긁기!!
-					for(int z=0; z < category; z++)   // z는 상세정보 가게 / 카테고리(가게) 1개 - 
+					for(int z=0; z < kategorie; z++)   // z는 상세정보 가게 / 카테고리(가게) 1개 - 
 					{
 						
 						
@@ -135,13 +204,13 @@ public class mainInfoManager {
 					
 						 */
 						//가게 고유번호
-						vo.setR_No(((z) + ((j)*category) + ((i)*(page*category))));
+						vo.setrNo(((z) + ((j)*kategorie) + ((i)*(page*kategorie))));
 						
 						//가게이름
 						try {
 							
-							r_Name=doc2.select("span.storeName").get(0);
-							vo.setR_Name(r_Name.text());
+							rName = doc2.select("span.storeName").get(0);
+							vo.setrName(rName.text());	
 						
 						}catch (Exception ex) { break;}
 						
@@ -162,74 +231,123 @@ public class mainInfoManager {
 						
 						
 						//가게업종
-						try{
-							
-							//가게 업종의 값을 읽어서 r_Type에 넣음!
-							
-							try {
+						try{			
+								rType = doc2.select("dl.restType dd.type").get(0);
 								
-								r_Foodtype = doc2.select("dl.restType dd.type").get(0);
-								
-								//경우1
-								if(r_Foodtype.text().indexOf("-") != -1){ // -있다면!
+								//경우1 -가 있다면  -앞에서 자르기!
+								if(rType.text().indexOf("-") != -1){ // -있다면!
 									// "-" 글자 아에서 - 앞까지 자르고..
-									vo.setR_Type(r_Foodtype.text().substring(0,r_Foodtype.text().indexOf("-")));
-									
-								}
-								//경우2
-								else if(r_Foodtype.text().indexOf("(") != -1){ // 문자열에 "(" 있다면
+									vo.setrType(rType.text().substring(0,rType.text().indexOf("-")));
+								}//경우2
+								else if(rType.text().indexOf("(") != -1){ // 문자열에 "(" 있다면
 									// "-" 글자 아에서 ( 앞까지 자르고..
 									
 									try{
 										// 전문뷔페(씨푸드뷔페)  ==> 뷔페
-										if(r_Foodtype.text().indexOf("뷔")==2){
+										if(rType.text().indexOf("뷔")==2){
 												
-											vo.setR_Type(r_Foodtype.text().substring(3,5));
+											vo.setrType(rType.text().substring(3,5));
 											
 										}else{ // 한식(돈까스 전문) => 한식
 									
-											vo.setR_Type(r_Foodtype.text().substring(0,r_Foodtype.text().indexOf("(")));
+											vo.setrType(rType.text().substring(0,rType.text().indexOf("(")));
 										}
 									
 									}catch(Exception ex)
-									{	
-										break; }
+									{ break; }
 									
 								}
 								//경우3  전문뷔페 =>  인덱스 2번째에 "뷔"가 있으면 => 
-								else if(r_Foodtype.text().indexOf("뷔")==2){
+								else if(rType.text().indexOf("뷔")==2){
 								
-									vo.setR_Type(r_Foodtype.text().substring(3,5));
+									vo.setrType(rType.text().substring(3,5));
 									 
 								}// 경우 4
 								else //그 외에는..그냥 담기//?
-									vo.setR_Type(r_Foodtype.text());
+									vo.setrType(rType.text());
 								
-								}catch(Exception ex) {vo.setR_Type("기타");} //위에 해당되지 않으면!!
+								}catch(Exception ex) {vo.setrType("기타");} //위에 해당되지 않으면!!
 							
-							
-							}catch(Exception ex) {}
-							//가게업종끝!!
 						
-						list.add(vo);
+					/*	
+						//가게 전화번호
+						try {
+						rTel = doc2.select("dl.restTel dd.tel1").get(0);
+						vo.setrTel(rTel.text());
+						}catch(Exception ex) {vo.setrTel("없음");}	
+						
+					*/
+						//가게 전화번호
+						try{
+							
+							rTel=doc2.select("dl.restTel dd.tel1").get(0);
+							
+							
+							vo.setrTel(rTel.text());
+							
+							
+							
+							
+							
+						}catch(Exception ex) {} 
+						
+						
+						
+						
+						
+						
+						//가게 구주소
+						try {
+							rAddr1 = doc2.select("dl.restAdd dd.add1").get(0);
+							vo.setrAddr1(rAddr1.text());
+						}catch (Exception ex) {vo.setrAddr1("없음");}
+						//가게 신주소
+						try{
+							rAddr2 = doc2.select("dl.restAdd dd.add2").get(0);
+							vo.setrAddr2(rAddr2.text());
+						}catch (Exception ex) {vo.setrAddr1("");}
+						//가게 평점
+						try {
+							rScore = doc2.select("dl.restGrade span.total").get(0);
+							vo.setrScore(Double.parseDouble(rScore.text()));
+						}catch(Exception ex) {vo.setrScore(0);}
+						//가게평점 평가인원수
+						try {
+							rScoreCount = doc2.select("dl.restGrade span.count").get(0);
+							String[] temp = rScoreCount.text().split("명");
+							vo.setrScoreCount(Integer.parseInt(temp[0]));
+						}catch(Exception ex) {vo.setrScoreCount(0);}
+						//추천가격대(높음)						
+						
+						
+						String[] area = {"서울 강남|ss","서울 강북|sn","경기 남부|cs","경기 북부|cn","인천|ic","부산|bs","대구|dg","광주|gj","대전|dj","울산|us","강원|gw","충청|cc","경상|gs","전라|jl","제주|jj"};
+
+					    // 가게 지역!!
+						for(int count = 0 ; count < area.length ; count++)
+						{
+					
+							if(area[count].substring(area[count].indexOf("|")+1).equals(ac.get(i).getA_AreaCode().substring(0,2)))
+								vo.setrArea(area[count].substring(0,area[count].indexOf("|")));
 						}
-					
-					
-					//가장 밖 try!
-				}catch(Exception ex)
-				{ ex.printStackTrace(); }
-				
-			}
 			
+						// 가게 세부 지역!!
+						for(int count = 0 ; count < ac.size(); count++)	
+						{
+							if(ac.get(count).getR_Area().equals(vo.getrArea()))
+							{
+								
+								vo.setrAreaDetail(ac.get(count + (Integer.parseInt(ac.get(i).getA_AreaCode().substring(3))) -1).getR_AreaDetail());
+								break;
+							}
+						}
+						list.add(vo);
+					}
+			}catch(Exception ex) {ex.printStackTrace();}
 		}
-		
-		return list;
 	}
-	
-	
-	
-	
-	
+	return list;
+}
+
 	
 	
 	public static void main(String[] args) {
@@ -245,7 +363,7 @@ public class mainInfoManager {
 		
 		list = ifm.mainInfoAllData(am.AreacodeAllData());
 		
-		mainInfoDAO dao=mainInfoDAO.newInstance();
+	//	mainInfoDAO dao=mainInfoDAO.newInstance();
 		
 		int k=1;
 		for(int i = 0 ; i < list.size() ; i++)
@@ -258,12 +376,22 @@ public class mainInfoManager {
 				Thread.sleep(500);
 				
 			}catch(Exception ex) {}	
+			
 			k++;
 			
-			System.out.println(list.get(i).getR_No());
-			System.out.println(list.get(i).getR_Name());
-			System.out.println(list.get(i).getR_Type());
+			System.out.println(list.get(i).getrNo());
+			System.out.println(list.get(i).getrName());
+			System.out.println(list.get(i).getrType());
+			System.out.println(list.get(i).getrTel());
+			System.out.println(list.get(i).getrAddr1());
+			System.out.println(list.get(i).getrAddr2());
+			System.out.println(list.get(i).getrScore());
+			System.out.println(list.get(i).getrScoreCount());	
 			
+			System.out.println(list.get(i).getrArea());
+			System.out.println(list.get(i).getrAreaDetail());
+			
+			System.out.println();
 			
 		/*
 			System.out.println(list.get(i).getR_Tel());
@@ -291,10 +419,7 @@ public class mainInfoManager {
 			System.out.println(list.get(i).getR_hit());
 			System.out.println(list.get(i).getR_Start());
 		*/	
-			System.out.println(list.get(i).getR_Area());
-			System.out.println(list.get(i).getR_AreaDetail());
 			
-			System.out.println();
 		}
 		System.out.println("save end.........");
 		
