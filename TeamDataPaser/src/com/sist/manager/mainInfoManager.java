@@ -269,53 +269,71 @@ public class mainInfoManager {
 								}catch(Exception ex) {vo.setrType("기타");} //위에 해당되지 않으면!!
 							
 						
-					/*	
-						//가게 전화번호
-						try {
-						rTel = doc2.select("dl.restTel dd.tel1").get(0);
-						vo.setrTel(rTel.text());
-						}catch(Exception ex) {vo.setrTel("없음");}	
-						
-					*/
 						//가게 전화번호
 						try{
 							
 							rTel=doc2.select("dl.restTel dd.tel1").get(0);
 							
-							
-							vo.setrTel(rTel.text());
-							
-							
-							
-							
-							
-						}catch(Exception ex) {} 
+								vo.setrTel(rTel.text().replaceAll("[()]", "").replace(" ", "-"));
 						
+
+						}catch(Exception ex) {break;} 
 						
-						
-						
-						
+
 						
 						//가게 구주소
 						try {
+							
 							rAddr1 = doc2.select("dl.restAdd dd.add1").get(0);
-							vo.setrAddr1(rAddr1.text());
-						}catch (Exception ex) {vo.setrAddr1("없음");}
+							
+							if(rAddr1.text()==null){
+								
+								vo.setrAddr1("0");
+								
+							}else{
+								
+								vo.setrAddr1(rAddr1.text());
+								
+							}
+							
+						}catch (Exception ex) {vo.setrAddr1("0");}
+						
 						//가게 신주소
 						try{
+							
+
 							rAddr2 = doc2.select("dl.restAdd dd.add2").get(0);
-							vo.setrAddr2(rAddr2.text());
-						}catch (Exception ex) {vo.setrAddr1("");}
+
+
+							if(rAddr2.text()==null){
+
+								vo.setrAddr2("0");
+
+							}
+							else  // [새주소] 서울 서초구 서초대로73길 7 => 서울 서초구 서초대로73길 7)
+							{	
+									
+								vo.setrAddr2(rAddr2.text().substring(rAddr2.text().indexOf("]")+2));
+							}
+									
+						}catch (Exception ex) {vo.setrAddr2("0");}
+						
 						//가게 평점
 						try {
+							
 							rScore = doc2.select("dl.restGrade span.total").get(0);
 							vo.setrScore(Double.parseDouble(rScore.text()));
+							
+							
 						}catch(Exception ex) {vo.setrScore(0);}
+						
 						//가게평점 평가인원수
 						try {
+							
 							rScoreCount = doc2.select("dl.restGrade span.count").get(0);
 							String[] temp = rScoreCount.text().split("명");
 							vo.setrScoreCount(Integer.parseInt(temp[0]));
+							
 						}catch(Exception ex) {vo.setrScoreCount(0);}
 						//추천가격대(높음)						
 						
