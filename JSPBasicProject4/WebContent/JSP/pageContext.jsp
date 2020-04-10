@@ -8,7 +8,7 @@
 	String name=pageContext.getRequest.getParameter("name");    
     
     화면을 조립하거나 화면을 이동을 하되 request를 유지할 수 있게 하는 기능이 있다.
-  1) 화면 조립:  include()- request 공유 가능
+  1) 화면 조립:   include()- request 공유 가능
   2) 화면 이동 :  forward()- forward된 파일을 덮으씀으로서 파일이 변경되지 않고 내용변경만 가능하므로 기본의 정보갖고 있다.
   				덥어씌워진 페이지가 갖고 있던 request값을 그대로 사용할 수 있다.
     

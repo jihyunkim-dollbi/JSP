@@ -8,7 +8,7 @@ p114
     
 기본객체 (내장객체)
 	
-1) request : 사용자 요청 정보, 사용자의 정보 ==> session생성, cookie 생성
+1) request :  사용자 요청 정보, 사용자의 정보 ==> session생성, cookie 생성
 ---HttpServletRequest
 
 2) response : 응답 정보, header 정보, ***이동 정보(페이지)(sendRedirect() => 사전에 파일크기,정보 미리 보내줘야?)

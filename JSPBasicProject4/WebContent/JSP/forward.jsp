@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>	
-<h1>Forward</h1>
+<h1>Forward </h1>
 	<h2><%= request.getParameter("id") %></h2>
 </body>
 </html>

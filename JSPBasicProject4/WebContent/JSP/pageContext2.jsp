@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="temp.jsp?no=1&id=admin">Redirect</a><br>
+	<a href="temp.jsp?no=1&id=admin">Redirect </a><br>
 	<a href="temp.jsp?no=2&id=admin">Forward</a>
 </body>
 </html>

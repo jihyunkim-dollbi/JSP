@@ -8,7 +8,7 @@
 </head>
 <body>
 	<center>
-		<h1>Header</h1>
+		<h1>Header </h1>
 		<h2><%= request.getParameter("id2") %>
 	</center>
 </body>
