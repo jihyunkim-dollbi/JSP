@@ -11,7 +11,7 @@
 <!-- Container (Pricing Section) -->
 <div id="pricing" class="container-fluid">
   <div class="text-center">
-    <h2>Pricing</h2>
+    <h2>Pricing </h2>
     <h4>Choose a payment plan that works for you</h4>
   </div>
   <div class="row slideanim">

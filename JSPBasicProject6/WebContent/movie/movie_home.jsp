@@ -16,7 +16,7 @@
     <div class="col-sm-4">
       <div class="thumbnail">
         <img src="paris.jpg" alt="Paris" width="400" height="300">
-        <p><strong>Paris</strong></p>
+        <p><strong>Pari s</strong></p>
         <p>Yes, we built Paris</p>
       </div>
     </div>

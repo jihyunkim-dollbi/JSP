@@ -10,7 +10,7 @@
 <!-- Container (Services Section) -->
 <div id="services" class="container-fluid text-center">
   <h2>SERVICES</h2>
-  <h4>What we offer</h4>
+  <h4>What we  offer</h4>
   <br>
   <div class="row slideanim">
     <div class="col-sm-4">
