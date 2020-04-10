@@ -6,8 +6,8 @@
 	
 	
 			<로그인하기>
-			1. post방식으로 2. 값을 넘김 request
-			3. response로 화면이동
+			1.  post방식으로 2. 값을 넘김 request
+			3.  response로 화면이동
 			4. 로그아웃전까지 id갖고있어야 => session!
 			5. 내가 최근에 본 항목 출력해줌 해당 컴퓨터 안에 기록됨 => cookie!
 			
