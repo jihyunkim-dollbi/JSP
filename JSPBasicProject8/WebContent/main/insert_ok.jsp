@@ -15,7 +15,7 @@
     
     %>
     
-<!-- 사용작 입력한 값 받기!  -->    
+<!-- 사용작 입력한  값 받기!  -->    
 <jsp:useBean id="vo" class="com.sist.dao.BoardBean">
 	<jsp:setProperty name="vo" property="*"/>
 </jsp:useBean>

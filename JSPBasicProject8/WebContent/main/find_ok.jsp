@@ -11,7 +11,7 @@
      		
      	}catch(Exception ex) {}
      
-     	//ss값 받기
+     	//ss값  받기
      	String ss=request.getParameter("ss");
      	
      

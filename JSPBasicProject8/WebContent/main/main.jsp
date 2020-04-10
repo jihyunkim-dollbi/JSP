@@ -8,7 +8,7 @@
 		request.setCharacterEncoding("UTF-8");
 		
 	}catch(Exception ex) {}
-	//find에서 검색경우 한글이 깨지는 이유는 main을 거져처 정보를 출력하기 때문에 main에서 한글 변환을해줘야한다.
+	//find에서 검색경우  한글이 깨지는 이유는 main을 거져처 정보를 출력하기 때문에 main에서 한글 변환을해줘야한다.
 
 
 	String mode=request.getParameter("mode");
