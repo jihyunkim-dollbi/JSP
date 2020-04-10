@@ -7,7 +7,7 @@
 insert가 되면 list.jsp로 가라! 고 코딩-->
 
 <%
-	//데이터 받기
+	//데이터  받기
 	try{
 		
 		request.setCharacterEncoding("UTF-8");	

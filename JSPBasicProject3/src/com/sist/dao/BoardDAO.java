@@ -10,7 +10,7 @@ public class BoardDAO {
 	private PreparedStatement ps;
 	private final String URL="jdbc:oracle:thin:@localhost:1521:XE";
 	
-	//드라이버 등록
+	//드라이버  등록
 	public BoardDAO()
 	{
 		

@@ -4,7 +4,7 @@
    <%
     	String no=request.getParameter("no");
    		String pwd=request.getParameter("pwd");
-  		//출력될 내용!!
+  		//출력될 내용! !
    		//System.out.println("번호:"+no+",비밀번호:"+pwd);
 		  
   		

@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!-- _ok 데이터 받아서 db연동 후 이동=>response! -->
+<!-- _ok  데이터 받아서 db연동 후 이동=>response! -->
    
 <%
 

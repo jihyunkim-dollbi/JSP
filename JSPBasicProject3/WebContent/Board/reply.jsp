@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" %>
     
 <%
-	//detail에서 준것 받기
+	//detail에서  준것 받기
 	String no=request.getParameter("no");
 	String strPage=request.getParameter("page");
 	

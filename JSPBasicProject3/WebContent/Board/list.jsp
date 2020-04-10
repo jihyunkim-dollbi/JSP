@@ -4,7 +4,7 @@
     
 <%
 
-	//데이터 가져오기
+	//데이터  가져오기
 	BoardDAO dao=new BoardDAO();
 
 	//사용자가 요청한 페이지 받기 => 사용자가 보내준값은 모두 request로 

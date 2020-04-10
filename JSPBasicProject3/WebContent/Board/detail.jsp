@@ -5,7 +5,7 @@
     <%
     
     
-  	//no값과  해당 page를 dao로 전송
+  	//no값과   해당 page를 dao로 전송
   	//list.jsp에서 사용자가 게시물no와 해당page 정보를 클릭한 경우 => 내용보기 detail.jsp를 열예정!
   	//사용자가 클릭한 정보no와 page정보를 getParameter로 받아 스트링으로 받고.
   	String no=request.getParameter("no");
