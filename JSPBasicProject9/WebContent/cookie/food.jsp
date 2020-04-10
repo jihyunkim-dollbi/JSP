@@ -5,7 +5,7 @@
     <%
     	
     	String cateno = request.getParameter("cateno");
-    	//값 받기
+    	//값  받기
     	CategoryBean cb= dao.categoryInfoData(Integer.parseInt(cateno));
     	List<FoodHouseBean> list=dao.foodCategoryList(Integer.parseInt(cateno));
     	

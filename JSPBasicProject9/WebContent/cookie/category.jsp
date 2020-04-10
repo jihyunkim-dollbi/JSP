@@ -6,7 +6,7 @@
     
     List<CategoryBean> list = dao.categoryListData();
     
-    //쿠키읽기 =>번호로 값을 저장하고 그림하나만 가져올예정 ==> 빈이 있으니까 링크 사용 가능
+    //쿠키읽기 =>번호로  값을 저장하고 그림하나만 가져올예정 ==> 빈이 있으니까 링크 사용 가능
     List<FoodHouseBean> fList = new ArrayList<FoodHouseBean>();
     //객체단위로 저장후 원하는 것 뽑아 사용하기
     
@@ -45,7 +45,6 @@
 	<h1 class="text-left">믿고 보는 맛집 리스트</h1>
 		<div class="row">
 			<%
-			
 				for(CategoryBean vo:list)
 				{
 			%>

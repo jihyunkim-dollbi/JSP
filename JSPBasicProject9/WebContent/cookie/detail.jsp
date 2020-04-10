@@ -3,7 +3,7 @@
    
    
     
-    <!-- 데이터 가지러  DAO로 고고씽 -->
+    <!-- 데이터  가지러  DAO로 고고씽 -->
     
     <jsp:useBean id="dao" class="com.sist.dao.FoodDAO"></jsp:useBean>
    <%
