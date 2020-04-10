@@ -4,7 +4,7 @@ public class B {
 
 	public void display()
 	{
-		System.out.println("b:display call");
+		System.out.println("b:display  call");
 		
 	}
 	
