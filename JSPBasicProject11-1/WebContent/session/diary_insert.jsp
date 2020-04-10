@@ -9,6 +9,6 @@
 <body>
 	<%= session.getAttribute("id") %>(<%=session.getAttribute("name") %>)
 		<br>
-		<a href="diary_out.jsp">로그아웃</a>
+		<a href="diary_out.jsp">로그 아웃</a>
 </body>
 </html>

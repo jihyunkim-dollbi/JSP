@@ -94,7 +94,7 @@ function join(){
 					<th width=15% class="danger text-right">ID</th>
 					<td width=85%>
 						<input type=text name=id size=15 class="input-sm" readonly> <!-- 중복체크 후 새창에서 확인을 하고 확정값을 id칸에 넣을 예정! -->
-						<input type="button" value="중복체크" class="btn btn-sm btn-danger" onclick="idcheck()">
+						<input type="button" value="중복체크" class="btn btn-sm btn-danger" onclick="idcheck()" >
 					</td>
 				</tr>
 				

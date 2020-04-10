@@ -36,7 +36,7 @@
 <%
 		
     		
-    	}else //로그인된 상태
+    	}else //로그인된  상태
     	{
     		//id/name 저장해놓기
     		session.setAttribute("id", id); //세션에 저장 공유됨!

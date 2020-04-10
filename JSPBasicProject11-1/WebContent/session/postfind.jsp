@@ -9,7 +9,7 @@
     	}catch(Exception ex) {}
     
     	String dong=request.getParameter("dong"); // '연남'검색한 값을 여기서 다시 받음!!
-    	//시작하자마자 값이 들어오지 않기 때문에 null값일 경우 처리를 해줘야한다.!!
+    	//시작하자마자 값이 들어오지  않기 때문에 null값일 경우 처리를 해줘야한다.!!
     	
     	    
     	List<ZipcodeBean> list=null; //값을 받아옴 // 맨처음 창을 띄웠을때 값이 null

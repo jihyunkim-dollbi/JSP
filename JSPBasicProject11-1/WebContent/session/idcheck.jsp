@@ -7,7 +7,7 @@
     
    		int temp=0; //입력/미입력
    		//사용가능한 id!
-   		// "null" 이라는 id로 인식함! 
+   		// "null" 이라는 id로  인식함! 
    		int count=0; // 존재/무존재
    		if(id!=null) // id가 입력이 되었다면 temp에 1을 줌 ==> temp=1은 id가 입력된 상태!
    		{

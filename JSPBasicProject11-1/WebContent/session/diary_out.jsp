@@ -9,7 +9,7 @@
 
 	/*
 	
-		Session: 서버에 일부 데이터 저장해놓고 => 모든 JSP에서 공유할 목적으로 사용
+		Session:  서버에 일부 데이터 저장해놓고 => 모든 JSP에서 공유할 목적으로 사용
 		주요 기능)
 		1) setAttribute(key, Object) : 세션공간에 저장할때
 		2) getAttribute(key) : 저장값 가져올때

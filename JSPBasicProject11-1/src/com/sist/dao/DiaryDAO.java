@@ -102,7 +102,7 @@ public class DiaryDAO {
 		
 	}
 	
-	//id check
+	//id  check
 	public int idcheck(String id)
 	{
 		int count=0;

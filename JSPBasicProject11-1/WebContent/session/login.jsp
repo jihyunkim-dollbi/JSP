@@ -46,7 +46,7 @@ function login(){
 	//입력 됨
 	
 	f.submit(); 
-	//값을 전송 -==> action="login_ok.jsp" 로 고고!!
+	//값을 전송 -==> action="login_ok.jsp" 로  고고!!
 	
 	//taost!
 	

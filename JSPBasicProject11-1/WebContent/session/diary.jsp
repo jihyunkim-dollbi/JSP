@@ -8,7 +8,7 @@
 			=>HttpSession (각 클라이언트마다 1개 배정) ==> request를 이용해서 session을 언어온다.
 			=>관련된 메소드(기능)
 			
-					key: 스트링
+					key:  스트링
 				1) 저장 ==============================> setAttribute(key, 값) 
 																		== Object(모아서arraylist 저장 가능) - 리턴형: 리스트 가능
 											Cookie cookie = new Cookie(key, 값)

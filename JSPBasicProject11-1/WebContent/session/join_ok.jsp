@@ -18,7 +18,7 @@
     
 	<%
 
-	//연결
+	//연 결
 	System.out.println(vo.getSex());
 	dao.memberInsert(vo);
 	
