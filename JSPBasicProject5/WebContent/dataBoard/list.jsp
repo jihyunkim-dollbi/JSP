@@ -10,7 +10,7 @@
 	*/
 
 	String strPage=request.getParameter("page");
-	//디폴트 페이지에 null => 1주기!
+	//디폴트  페이지에 null => 1주기!
 	if(strPage==null)
 	{
 		strPage="1";

@@ -15,7 +15,7 @@
 	int maxSize=100*1024*1024; //100M
 	String enctype="UTF-8";
 	
-	//업로드기능!
+	//업로드 기능!
 	//new DefaultFileRenamePolicy() 같은 파일명일 경우 자동으로 1,2,3 ..붙여줌
 	MultipartRequest mr=new MultipartRequest(request,path, maxSize,enctype, new DefaultFileRenamePolicy()); //파일받는 	
 
